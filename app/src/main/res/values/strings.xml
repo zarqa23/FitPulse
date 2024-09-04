@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FitPulse</string>
+    <string name="select_country_text">Select Country</string>
+</resources>
