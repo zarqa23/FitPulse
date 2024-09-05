@@ -257,7 +257,7 @@ fun ProfileScreen(
                                     .offset(x = (0).dp, y = (0).dp)
                             ) {
                                 Icon(
-                                    painter = painterResource(id = R.drawable.cameraicon),
+                                    painter = painterResource(id = R.drawable.camera_icon),
                                     contentDescription = "Edit Image",
                                     modifier = Modifier.size(30.dp),
                                 )

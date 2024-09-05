@@ -211,7 +211,7 @@ fun SettingsScreen(navController: NavHostController, userViewModel: UserViewMode
                     Divider(modifier = Modifier.padding(vertical = 8.dp))
 
                     SettingsButton(
-                        text = "LogOut",
+                        text = "Log Out",
                         onClick = {
                             navController.navigate("yourgoals")
                         }

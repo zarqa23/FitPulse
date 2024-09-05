@@ -53,7 +53,7 @@ fun MyApp(navController: NavHostController, userViewModel: UserViewModel) {
     }
 
     FitnestTheme {
-        NavHost(navController = navController, startDestination = if (isRegistered) "home" else "splash") {
+        NavHost(navController = navController, startDestination = "splash") {
             composable("splash") {
                 SplashScreen(navController = navController)
             }
