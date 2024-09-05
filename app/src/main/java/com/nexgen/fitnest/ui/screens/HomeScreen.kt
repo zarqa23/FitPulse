@@ -73,6 +73,19 @@ fun HomeScreen(onLogout: () -> Unit, navController: NavHostController) {
     val selectedArea = sharedPreferences.getString("selectedArea", "Not Selected")
     val selectedGoal = sharedPreferences.getString("selectedGoal", "Not Selected")
     val selectedExperience = sharedPreferences.getString("selectedExperience", "Not Selected")
+
+    fun getDirectLink(driveShareLink: String): String {
+        val fileId = driveShareLink.substringAfter("/d/").substringBefore("/")
+        return "https://drive.google.com/uc?id=$fileId"
+    }
+
+
+    fun convertVideoUrls(videoItems: List<VideoItem>): List<VideoItem> {
+        return videoItems.map {
+            VideoItem(getDirectLink(it.videoUrl), it.title)
+        }
+    }
+
     fun onBottomNavItemSelected(index: Int) {
         selectedItem.value = index
         when (index) {
@@ -82,71 +95,85 @@ fun HomeScreen(onLogout: () -> Unit, navController: NavHostController) {
         }
     }
     val beginnerUpperBodyVideos = listOf(
-        VideoItem(R.raw.beg_up1, "Push Ups"),
-        VideoItem(R.raw.beg_up2, "Jumping Jacks"),
-        VideoItem(R.raw.beg_up3, "Squats"),
-        VideoItem(R.raw.beg_up4, "Lunges"),
-        VideoItem(R.raw.beg_up5, "Plank"),
+        VideoItem("https://drive.google.com/file/d/1rj47hCt4kqhi1Ru47TXBU6tvLPw8MOB7/view?usp=sharing", "Push Ups"),
+        VideoItem("https://drive.google.com/file/d/1auzg0IhTQqXSEZRRxr7XgnusMcsn011z/view?usp=sharing", "Jumping Jacks"),
+        VideoItem("https://drive.google.com/file/d/1k7lWG3AslA9wElgWx3quGhbBOnvxoU6O/view?usp=sharing", "Squats"),
+        VideoItem("https://drive.google.com/file/d/1-Hh_xdcw_bNLXvmrACd77aJuk8dIJ0PD/view?usp=sharing", "Lunges"),
+        VideoItem("https://drive.google.com/file/d/1-Tc7vF3PjgokHHL-vYUIoblByq6JR4Uh/view?usp=sharing", "Plank"),
     )
+    // Convert the URLs
+
     val beginnerLowerBodyVideos = listOf(
-        VideoItem(R.raw.beginner_lower1, "Burpees"),
-        VideoItem(R.raw.begginer_lower2, "Mountain Climbers"),
-        VideoItem(R.raw.beginer_lower3, "High Knees"),
-        VideoItem(R.raw.beginner_lower4, "Bicycle Crunches"),
+        VideoItem("https://drive.google.com/file/d/1IcQ1dt4Vzb8k-sC6gl2emYJ8Z3D8KS25/view?usp=sharing", "Burpees"),
+        VideoItem("https://drive.google.com/file/d/1xErf728GZ5XleGdh5vEt6tzrh9roHYR9/view?usp=sharing", "Mountain Climbers"),
+        VideoItem("https://drive.google.com/file/d/1IZxcVfZuWp4VbQPLyp4BKeWDSUPGojNg/view?usp=sharing", "High Knees"),
+        VideoItem("https://drive.google.com/file/d/1xBqq1keVtoOfT-mUo5NReTeF1gGmVHy5/view?usp=sharing", "Bicycle Crunches"),
     )
     val beginnerFullBodyVideos = listOf(
-        VideoItem(R.raw.beg_full1, "Pull Ups"),
-        VideoItem(R.raw.beg_full2, "Bench Press"),
-        VideoItem(R.raw.beg_full3, "Tricep Dips"),
-        VideoItem(R.raw.beg_full4, "Leg Raises"),
-        VideoItem(R.raw.beg_full5, "Russian Twists"),
+        VideoItem("https://drive.google.com/file/d/1LhDUJih9rsr7D3ZeHGnuzXCEVhqAw3Z0/view?usp=sharing", "Pull Ups"),
+        VideoItem("https://drive.google.com/file/d/1YEgVAFfLmqnJUsXEJ7QojVfi6EYXgkVH/view?usp=sharing", "Bench Press"),
+        VideoItem("https://drive.google.com/file/d/1mwh9ByBkMz9Xxm7FP0sMMeMKn_30skBo/view?usp=sharing", "Tricep Dips"),
+        VideoItem("https://drive.google.com/file/d/1f78X_eg2ddUnELCAW_w9wqHPFT0uhbOL/view?usp=sharing", "Leg Raises"),
+        VideoItem("https://drive.google.com/file/d/1W1MZ0-wbuXuP_SQ9dkf8tQxSuKI31z0N/view?usp=sharing", "Russian Twists"),
     )
     val intermediateUpperBodyVideos = listOf(
-        VideoItem(R.raw.int_up1, "Pull Ups"),
-        VideoItem(R.raw.int_up2, "Bench Press"),
-        VideoItem(R.raw.int_up3, "Tricep Dips"),
-        VideoItem(R.raw.int_up4, "Leg Raises"),
-        VideoItem(R.raw.int_up5, "Russian Twists"),
-        VideoItem(R.raw.int_up6, "Side Plank"),
+        VideoItem("https://drive.google.com/file/d/1AhOQ1AxZ9IHy1alyIF4-zT02BWx1jQlK/view?usp=sharing", "Pull Ups"),
+        VideoItem("https://drive.google.com/file/d/1gPh4S_u941yoj7OJnCcMSqmZUL1XUBcl/view?usp=sharing", "Bench Press"),
+        VideoItem("https://drive.google.com/file/d/1W30k34vu-6awNO4gGlT3WR5ngrIiF2VE/view?usp=sharing", "Tricep Dips"),
+        VideoItem("https://drive.google.com/file/d/1Yi5Tc9XxXn6ui-CGOPjRVD9ife7LSqET/view?usp=sharing", "Leg Raises"),
+        VideoItem("https://drive.google.com/file/d/1UkG3Iq0vBnjrlBxTq9KdGL66aQaB9UgI/view?usp=sharing", "Russian Twists"),
+        VideoItem("https://drive.google.com/file/d/1xcFpuIgxR3wXYsEbHtTYOtBGrJf9r9Vg/view?usp=sharing", "Side Plank"),
     )
     val intermediateLowerBodyVideos = listOf(
-        VideoItem(R.raw.int_low1, "Pull Ups"),
-        VideoItem(R.raw.int_low2, "Bench Press"),
-        VideoItem(R.raw.int_low3, "Tricep Dips"),
+        VideoItem("https://drive.google.com/file/d/1HLOnEBToY97zhHiLOAn0LdAAB3jT18Pa/view?usp=sharing", "Pull Ups"),
+        VideoItem("https://drive.google.com/file/d/1zhnJAQ4ryrVBCpJ9lmYLMZFQ0L8MPhcj/view?usp=sharing", "Bench Press"),
+        VideoItem("https://drive.google.com/file/d/1SxNvnw7-Nb-RuaBL1rYw8Td9sg7BmIl1/view?usp=sharing", "Tricep Dips"),
     )
     val intermediateFullBodyVideos = listOf(
-        VideoItem(R.raw.int_full1, "Pull Ups"),
-        VideoItem(R.raw.int_full2, "Bench Press"),
-        VideoItem(R.raw.int_full3, "Tricep Dips"),
+        VideoItem("https://drive.google.com/file/d/1szILog73uD5OTH4DQZrzNd8lT9nqirMc/view?usp=sharing", "Pull Ups"),
+        VideoItem("https://drive.google.com/file/d/1UWshlt1bNCU6Z6_gJVjUrIeKRh7GZjIZ/view?usp=sharing", "Bench Press"),
+        VideoItem("https://drive.google.com/file/d/1jwlKmYRNWzjPJnznByCmkM8cOQ5BMDkU/view?usp=sharing", "Tricep Dips"),
     )
     val expertUpperBodyVideos = listOf(
-        VideoItem(R.raw.exp_up1, "Pull Ups"),
-        VideoItem(R.raw.exp_up2, "Bench Press"),
-        VideoItem(R.raw.exp_up3, "Tricep Dips"),
-        VideoItem(R.raw.exp_up4, "Leg Raises"),
+        VideoItem("https://drive.google.com/file/d/1NboXePVocVoqhol6q0zZIvZvbyJCVW_b/view?usp=sharing", "Pull Ups"),
+        VideoItem("https://drive.google.com/file/d/1k7geHbJ7Q88EeeXjoBjnpsIdyS_vf-Td/view?usp=sharing", "Bench Press"),
+        VideoItem("https://drive.google.com/file/d/1pGJaqdYVIctDhNUICHtS8PEKfPe3OOkJ/view?usp=sharing", "Tricep Dips"),
+        VideoItem("https://drive.google.com/file/d/1cIG-JsJWk779_xgUlT_HU8L6A6rhniuY/view?usp=sharing", "Leg Raises"),
     )
     val expertLowerBodyVideos = listOf(
-        VideoItem(R.raw.exp_low1, "Pull Ups"),
-        VideoItem(R.raw.exp_low2, "Bench Press"),
-        VideoItem(R.raw.exp_low3, "Tricep Dips"),
+        VideoItem("https://drive.google.com/file/d/1uBlc5WbNyw9iKXZc6HTMEJsY0MOEBRqK/view?usp=sharing", "Pull Ups"),
+        VideoItem("https://drive.google.com/file/d/1xoSqDeF3_SSkbNsf_tpLHeLZh6_KQXKx/view?usp=sharing", "Bench Press"),
+        VideoItem("https://drive.google.com/file/d/16zOwsSp4tkm34HnWqUhJglbQuhoPHiji/view?usp=sharing", "Tricep Dips"),
     )
     val expertFullBodyVideos = listOf(
-        VideoItem(R.raw.exp_full1, "Pull Ups"),
-        VideoItem(R.raw.exp_full2, "Bench Press"),
-        VideoItem(R.raw.exp_full3, "Tricep Dips"),
+        VideoItem("https://drive.google.com/file/d/1aRwzsw5kDtDZlGkSeZxpwnYuB8u8rYUU/view?usp=sharing", "Pull Ups"),
+        VideoItem("https://drive.google.com/file/d/1uc4h0Ku25gV8jj8JBYR9xaqU6bTUJt_y/view?usp=sharing", "Bench Press"),
+        VideoItem("https://drive.google.com/file/d/1CTa8PgIBS43rD_ou0PYmaO0tAVXt7G4s/view?usp=sharing", "Tricep Dips"),
     )
+
+    // Converted lists
+    val convertedBeginnerUpperBodyVideos = convertVideoUrls(beginnerUpperBodyVideos)
+    val convertedBeginnerLowerBodyVideos = convertVideoUrls(beginnerLowerBodyVideos)
+    val convertedBeginnerFullBodyVideos = convertVideoUrls(beginnerFullBodyVideos)
+    val convertedIntermediateUpperBodyVideos = convertVideoUrls(intermediateUpperBodyVideos)
+    val convertedIntermediateLowerBodyVideos = convertVideoUrls(intermediateLowerBodyVideos)
+    val convertedIntermediateFullBodyVideos = convertVideoUrls(intermediateFullBodyVideos)
+    val convertedExpertUpperBodyVideos = convertVideoUrls(expertUpperBodyVideos)
+    val convertedExpertLowerBodyVideos = convertVideoUrls(expertLowerBodyVideos)
+    val convertedExpertFullBodyVideos = convertVideoUrls(expertFullBodyVideos)
+
 
     // Define video lists for each combination
     val videos = when {
-        selectedExperience == "Beginner" && selectedArea == "Upper Body" -> beginnerUpperBodyVideos
-        selectedExperience == "Beginner" && selectedArea == "Lower Body" -> beginnerLowerBodyVideos
-        selectedExperience == "Beginner" && selectedArea == "Full Body" -> beginnerFullBodyVideos
-        selectedExperience == "Intermediate" && selectedArea == "Upper Body" -> intermediateUpperBodyVideos
-        selectedExperience == "Intermediate" && selectedArea == "Lower Body" -> intermediateLowerBodyVideos
-        selectedExperience == "Intermediate" && selectedArea == "Full Body" -> intermediateFullBodyVideos
-        selectedExperience == "Advanced" && selectedArea == "Upper Body" -> expertUpperBodyVideos
-        selectedExperience == "Advanced" && selectedArea == "Lower Body" -> expertLowerBodyVideos
-        selectedExperience == "Advanced" && selectedArea == "Full Body" -> expertFullBodyVideos
+        selectedExperience == "Beginner" && selectedArea == "Upper Body" -> convertedExpertFullBodyVideos
+        selectedExperience == "Beginner" && selectedArea == "Lower Body" -> convertedBeginnerLowerBodyVideos
+        selectedExperience == "Beginner" && selectedArea == "Full Body" -> convertedBeginnerFullBodyVideos
+        selectedExperience == "Intermediate" && selectedArea == "Upper Body" -> convertedIntermediateUpperBodyVideos
+        selectedExperience == "Intermediate" && selectedArea == "Lower Body" -> convertedIntermediateLowerBodyVideos
+        selectedExperience == "Intermediate" && selectedArea == "Full Body" -> convertedIntermediateFullBodyVideos
+        selectedExperience == "Advanced" && selectedArea == "Upper Body" -> convertedExpertUpperBodyVideos
+        selectedExperience == "Advanced" && selectedArea == "Lower Body" -> convertedExpertLowerBodyVideos
+        selectedExperience == "Advanced" && selectedArea == "Full Body" -> convertedExpertFullBodyVideos
         // Add more conditions for other combinations
         else -> emptyList() // Default to empty list if no match
     }
