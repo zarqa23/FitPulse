@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1066662525158",
+    "project_id": "fitpulse2-af9c2",
+    "storage_bucket": "fitpulse2-af9c2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066662525158:android:b76d1e804a506f64442327",
+        "android_client_info": {
+          "package_name": "com.nexgen.fitpulse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgfmzjMw1BFNvQMUTHK08d84rPFXGqZJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066662525158:android:72c10e2f90195177442327",
+        "android_client_info": {
+          "package_name": "com.nexgen.fitpulse2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgfmzjMw1BFNvQMUTHK08d84rPFXGqZJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

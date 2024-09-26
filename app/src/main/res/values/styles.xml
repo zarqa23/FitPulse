@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.YourApp" parent="Theme.AppCompat.DayNight">
+        <!-- Customize your theme here -->
+        <item name="android:windowBackground">#025D93</item>
+    </style>
+</resources>
